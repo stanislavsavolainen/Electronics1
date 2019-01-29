@@ -1,0 +1,8 @@
+CREATE TABLE temperature1 (
+
+`datasample_id` int(11) NOT NULL AUTO_INCREMENT,
+`measure_timestamp` datetime DEFAULT NULL,
+`temperature` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`datasample_id`)
+  
+);

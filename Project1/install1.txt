@@ -1,0 +1,9 @@
+npm install express -S
+
+npm install body-parser -S
+
+npm install knex -S
+
+npm install johnny-five -S
+
+npm install mysql -S
