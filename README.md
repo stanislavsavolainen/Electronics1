@@ -12,6 +12,7 @@ measure temperature data
 extenssion for project to save and display history data of temperature with 10 second measure interval 
 to detect new temperature.
 
+-> It will contains hosted html page (in future), where ajax call asking temperature and visualize it at client side using chartjs.
 
 Original source to project :
 
