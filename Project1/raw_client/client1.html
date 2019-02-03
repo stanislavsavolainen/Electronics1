@@ -1,0 +1,61 @@
+
+
+<!--
+
+https://www.chartjs.org/docs/latest/general/responsive.html
+
+https://www.sitepoint.com/introduction-chart-js-2-0-six-examples/
+
+-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+
+
+function getHttpData(){
+
+}
+
+function drawLineChart(){
+
+  var canvas = document.getElementById("mychart");
+  var ctx = canvas.getContext('2d');
+  
+  
+  var serverData = {
+  	labels : [ 2, 4, 6, 8],
+  	datasets : [ {  label: 'temperature', data : [  50, 70, 20 , 60] , backgroundColor: "rgba(255,153,0,0.4)" }, ]
+  };
+  
+  
+  var lineChart = new Chart( ctx , {
+   type: 'line',
+   data : serverData,
+  
+   
+  
+  });
+
+}
+
+</script>
+
+<html>
+
+<body onload="drawLineChart()">
+
+<div align="center">
+ <div class="chart-container" style="position: relative; height:200px; width:50%">
+ 	<canvas id="mychart"/> 
+ </div>  	
+</div>
+
+
+</body>
+
+</html>
+
+
