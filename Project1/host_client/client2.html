@@ -1,0 +1,196 @@
+
+
+<!--
+
+This file give you a clue how temperature samples look like in analytics.
+Samples comming from server to client and ajax put values to chartjs.
+
+There is very big task not solved at the moment. Temperature having timestamp ( date + time), 
+so I made temporary decision ignoring date and count only time for chartjs to visualize somehow exsisting data.
+
+What actually required is datepicker to detect special day and more temperature samples, but
+temperature measurement interval should be more than 10 seconds to not spam so much data in database in short period of time.
+
+Please also note that tmp36 / tmp36gz is not very accurate sensor. Result can be little diffrent that you expect.
+
+
+
+https://www.chartjs.org/docs/latest/general/responsive.html
+
+https://www.sitepoint.com/introduction-chart-js-2-0-six-examples/
+
+https://embed.plnkr.co/JOI1fpgWIS0lvTeLUxUp/
+
+
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_substring
+
+https://stackoverflow.com/questions/4687723/how-to-convert-minutes-to-hours-minutes-and-add-various-time-values-together-usi
+
+-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+
+var serverData = {
+
+	labels : [ ],
+  	datasets : [ {  label: 'temperature', data : [ ] , backgroundColor: "rgba(255,153,0,0.4)" }, ]
+
+};
+
+
+function convertMinsToHrsMins(minutes) {
+  var h = Math.floor(minutes / 60);
+  var m = minutes % 60;
+  h = h < 10 ? '0' + h : h;
+  m = m < 10 ? '0' + m : m;
+  return h + ':' + m;
+}
+
+
+
+
+
+function getHttpData(){
+
+
+	for( var ii = 0; ii < (60 * 24); ii ++){
+	
+		var m_time = convertMinsToHrsMins(ii);
+	
+		serverData.labels.push(m_time);
+		serverData.datasets[0].data.push(0);
+	}
+
+
+
+	
+
+	$.ajax({
+	type: 'GET',
+	url: 'http://localhost:1111/tmp',
+	dataType: "JSON", // data type expected from server
+	success: function (data) {
+			
+			data.forEach( function ( element ) { 
+			
+				var e_id = element.datasample_id;
+				var e_timestamp = element.measure_timestamp;
+				var e_temperature = element.temperature;
+			
+				console.log( "Element id : " + e_id + " timestamp :" + e_timestamp + " temperature :" + e_temperature );
+			
+				var n_time = "" +e_timestamp.substring(19 , 8 );
+				var nn_time = "" +n_time.substring(3 , 8 );
+			
+			
+				console.log("time > " + nn_time);
+			
+				for( var ii = 0; ii < (60 * 24); ii ++){
+					if(nn_time == serverData.labels[ii] ){
+						serverData.datasets[0].data[ii] = e_temperature;
+					}
+				}
+			
+				//serverData.labels.push(e_id);
+				//serverData.datasets[0].data.push(e_temperature);
+				
+			});
+			
+			//serverData.labels.push(1);
+			//serverData.datasets[0].data.push(5);
+				
+			//serverData.labels.push(2);
+			//serverData.datasets[0].data.push(3);
+			
+			//serverData.labels.push(3);
+			//serverData.datasets[0].data.push(6);
+			
+			
+			
+			
+					
+	},
+	error: function() {
+		console.log('Error: Client cannot connect to server');
+	}
+});
+
+}
+
+function drawLineChart(){
+
+
+	getHttpData();
+
+	setTimeout(function(){  
+	
+	
+	  var canvas = document.getElementById("mychart");
+  var ctx = canvas.getContext('2d');
+  
+  /*
+  var serverData = {
+  	labels : [ 2, 4, 6, 8],
+  	datasets : [ {  label: 'temperature', data : [  50, 70, 20 , 60] , backgroundColor: "rgba(255,153,0,0.4)" }, ]
+  };
+  */
+  
+  var lineChart = new Chart( ctx , {
+   type: 'line',
+   data : serverData,
+  
+   options : {
+   
+    scales: {
+                              xAxes: [{
+                                ticks: {
+                              
+                                  minRotation: 90,
+                                   
+                                  autoSkip: true,
+                                  maxTicksLimit: 24,
+                                  stepSize : 60
+                                }
+                              }],
+                            
+              
+                            },
+   
+   }
+                     
+  
+  });
+	
+	
+	
+	}, 3000);
+
+
+
+
+}
+
+</script>
+
+<html>
+
+<body onload="drawLineChart()">
+
+<div align="center">
+ <div class="chart-container" style="position: relative; height:200px; width:50%">
+ 	<canvas id="mychart"/> 
+ </div>  	
+</div>
+
+
+</body>
+
+</html>
+
+
