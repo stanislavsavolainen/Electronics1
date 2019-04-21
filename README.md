@@ -1,7 +1,7 @@
 # Electronics1
 arduino, johnny-five and circuit diagram / info
 
-
+_________________________________________________________
 
 Project 1 : Thermometer -TMP 36 (nodejs - johnny-five) 
 
@@ -17,5 +17,26 @@ to detect new temperature.
 Original source to project :
 
 http://johnny-five.io/examples/temperature-tmp36/
+
+__________________________________________________________
+
+
+Project 2 : Logic gates 
+
+-> "or_gate.JPG" picture show closed diagram of OR gate logic using sn7432n chip.
+
+-> "and_gate.JPG" picture show closed diagram of AND gate logic using sn74hct08 chip.
+
+-> "and_gate.JPG" picture show closed diagram of NOT gate logic using 74hct04n(philips) chip, 
+NOT GATE also means inverter / hex inverted chip.
+
+-> when check this diagram you can be confused about how switches works in practical way. 
+That in "OR"- and "AND"-gates switch present 1 in truth table as open ( not electricity flow) and 0
+means there is electricty, but led ( light emitting diode ) present oposite logic, where 0 means that 
+led is off and 1 means there is light in led.
+
+
+
+
 
 
