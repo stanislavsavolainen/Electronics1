@@ -25,11 +25,11 @@ Project 2 : Logic gates
 
 -> "or_gate.png" picture show closed diagram of OR gate logic using sn7432n chip.
 
-![Alt text](Project2/and_gate.png?)
+![Alt text](Project2/or_gate.png?)
 
 -> "and_gate.png" picture show closed diagram of AND gate logic using sn74hct08 chip.
 
-![Alt text](Project2/or_gate.png?)
+![Alt text](Project2/and_gate.png?)
 
 -> "and_gate.png" picture show closed diagram of NOT gate logic using 74hct04n(philips) chip, 
 NOT GATE also means inverter / hex inverted chip.
