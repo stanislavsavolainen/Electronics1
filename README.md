@@ -15,10 +15,14 @@ File -> Examples -> Firmata -> Standart firmata ( also you can select standart f
 
 Linux serial port for arduino :
 terminal : ls /dev/tty*    
--> to display ports, check what device apears, when you plug in usb - datacable to pc with arduino
+-> to display ports, check what device apears, when you plug in usb data cable to pc with arduino
 
--> for exmaple  "/dev/ttyACM2" or "/dev/ttyS0" at my device
+-> for example  "/dev/ttyACM2" or "/dev/ttyS0" at my device
+-> arduino ide -> tools -> serial port -> /dev/ttyS0
 
+if arduino ide software not displaying serial ports in Linux:
+-> try to give right to device using chmod commands , if there is no serial port option in arduino ide.
+-> Linux terminal : sudo chmod 777 /dev/ttyS0
 _________________________________________________________
 
 Project 1 : Thermometer -TMP 36 (nodejs - johnny-five) 
@@ -96,10 +100,10 @@ http://192.168.100.10:1111/off
 
 Please also note that when you get speed 0 value then just 
 http://192.168.100.10:1111/on
-not enought . You should call speed with parameter 1 to 255 or -1 to 255 to make motor spin.
+not enought . You should call speed with parameter (1 to 255) or (-1 to -255) to make motor spin.
 
 
-Warning. Big current is not good for motor ! This means that values 1 to 80 and -1 to 80 
+Warning. Big current is not good for motor ! This means that values (1 to 80) and (-1 to -80) 
 not suggested. Try to use more than 100 or -100.
 
 Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
