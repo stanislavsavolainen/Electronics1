@@ -3,6 +3,24 @@ arduino, johnny-five and circuit diagram / info
 
 _________________________________________________________
 
+
+Johny-five installation guide :
+
+Please note that for johnny - five project there is requirement "standrart-firmata" or "standrart firmata plus" modules. This module 
+must be loaded to arduino memory before you can run nodejs with johnny-five module, because johnny-five use I2C - protocol from this firmata module.
+
+To load this firmata you have to install arduino ide. In arduino ide software go to: 
+File -> Examples -> Firmata -> Standart firmata ( also you can select standart firmata plus, if you have tihs option )  
+
+
+Linux serial port for arduino :
+terminal : ls /dev/tty*    
+-> to display ports, check what device apears, when you plug in usb - datacable to pc with arduino
+
+-> for exmaple  "/dev/ttyACM2" or "/dev/ttyS0" at my device
+
+_________________________________________________________
+
 Project 1 : Thermometer -TMP 36 (nodejs - johnny-five) 
 
 -> Project require Uno Arduino R3 and thermometer tmp 36 sensor to
@@ -21,7 +39,7 @@ http://johnny-five.io/examples/temperature-tmp36/
 __________________________________________________________
 
 
-Project 2 : Logic gates 
+Project 2 : Logic gates ( arduino not required, just gate chip, wires and 9 voltage battery )
 
 1. Project 2 folder "or_gate.png" picture show closed diagram of OR gate logic using sn7432n chip.
 
@@ -42,17 +60,53 @@ means there is electricty, but led ( light emitting diode ) present oposite logi
 led is off and 1 means there is light in led.
 
 
+__________________________________________________________
 
 
+Project 3 : Motors ( express and Johnny-five project on nodejs )
+
+-> project require Uno Arduino R3, H-bridge (like L9110 H-bridge module) and motor
+-> standart dc motor 3 - 5 voltage with 150 - 200 mA current
+-> connect motor to L9110 h-bridge two first pins from left where two big green socets with 2 pins both .
+-> connect h-bridge L9110 to arduino 4 wires ( oposide site from 2 big green socets where 6 pins)
+-> for this 4 wires check following :
+   1. L9110 VCC connect to arduino 5 voltage pin
+   2. L9110 GND connect to arduino gnd pin
+   3. L9110 first left pin go to arduino pin 3
+   4. L9110 second left pin go to arduino pin 13
+
+Original source to project :
+http://johnny-five.io/examples/motor-hbridge/
+
+-> now for lauching this project  go to Project3 folder and run "npm install", because
+there is package.json file with all required library information to install. Then type "node motor.js"
+
+-> go to browser and go to folowing url : 
+http://192.168.100.10:1111/off
+http://192.168.100.10:1111/on
+
+Motor rotate forward: 
+http://192.168.100.10:1111/on?speed=100
+Motor rotate inverse direction: 
+http://192.168.100.10:1111/on?speed=-100
+Motor stop:
+http://192.168.100.10:1111/on?speed=0
+or 
+http://192.168.100.10:1111/off
+
+Please also note that when you get speed 0 value then just 
+http://192.168.100.10:1111/on
+not enought . You should call speed with parameter 1 to 255 or -1 to 255 to make motor spin.
 
 
+Warning. Big current is not good for motor ! This means that values 1 to 80 and -1 to 80 
+not suggested. Try to use more than 100 or -100.
 
+Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
+can damage microcontrollers pins, because thouse pins operate with 20mA current and motor current
+can go over 150mA.
 
-
-
-
-
-
+__________________________________________________________
 ...........
 
 Git project links :
