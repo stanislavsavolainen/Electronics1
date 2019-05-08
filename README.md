@@ -54,7 +54,7 @@ __________________________________________________________
 
 Project 2 : Logic gates ( arduino not required, just gate chip, wires, switches, led and 9 voltage battery )
 
-1. Project 2 folder "or_gate.png" picture show closed diagram of OR gate logic using sn7432n chip.
+1. Project 2 folder "or_gate.png" picture show of OR-gate circuit diagram logic using sn7432n chip.
 
 ![Alt text](Project2/or_gate.png?)
 
