@@ -6,23 +6,31 @@ _________________________________________________________
 
 Johny-five installation guide :
 
-Please note that for johnny - five project there is requirement "standrart-firmata" or "standrart firmata plus" modules. This module 
+Please note that for johnny - five project there is requirements is "standrart-firmata" or "standrart firmata plus" modules. This module 
 must be loaded to arduino memory before you can run nodejs with johnny-five module, because johnny-five use I2C - protocol from this firmata module.
 
 To load this firmata you have to install arduino ide. In arduino ide software go to: 
-File -> Examples -> Firmata -> Standart firmata ( also you can select standart firmata plus, if you have tihs option )  
+
+```File -> Examples -> Firmata -> Standart firmata``` 
+
+( also you can select standart firmata plus, if you have this option )  
 
 
-Linux serial port for arduino :
-terminal : ls /dev/tty*    
--> to display ports, check what device apears, when you plug in usb data cable to pc with arduino
+To display all devices and find out serial ports for arduino in Linux , enter in terminal :
+ 
+```ls /dev/tty*``` 
+   
+-> Check what device apears, when you plug in usb data cable to pc with arduino and display list of devices again
 
--> for example  "/dev/ttyACM2" or "/dev/ttyS0" at my device
+-> for example  ```/dev/ttyACM2``` or ```/dev/ttyS0```  my devices displayed
 -> arduino ide -> tools -> serial port -> /dev/ttyS0
 
 if arduino ide software not displaying serial ports in Linux:
--> try to give right to device using chmod commands , if there is no serial port option in arduino ide.
--> Linux terminal : sudo chmod 777 /dev/ttyS0
+-> try to give rights to device using chmod commands , if there is no serial port option in arduino ide.
+
+-> Linux terminal : 
+
+```sudo chmod 777 /dev/ttyS0```
 _________________________________________________________
 
 Project 1 : Thermometer -TMP 36 (nodejs - johnny-five) 
@@ -85,31 +93,30 @@ http://johnny-five.io/examples/motor-hbridge/
 -> now for lauching this project  go to Project3 folder and run "npm install", because
 there is package.json file with all required library information to install. Then type "node motor.js"
 
--> go to browser and go to folowing url : 
-http://192.168.100.10:1111/off
-http://192.168.100.10:1111/on
+-> go to browser and go to folowing url , to stop motor  ```http://192.168.100.10:1111/off``` and to start motor ```http://192.168.100.10:1111/on```
+
 
 Motor rotate forward: 
-http://192.168.100.10:1111/on?speed=100
+```http://192.168.100.10:1111/on?speed=100```
+
 Motor rotate inverse direction: 
-http://192.168.100.10:1111/on?speed=-100
+```http://192.168.100.10:1111/on?speed=-100```
+
 Motor stop:
-http://192.168.100.10:1111/on?speed=0
-or 
-http://192.168.100.10:1111/off
-
-Please also note that when you get speed 0 value then just 
-http://192.168.100.10:1111/on
-not enought . You should call speed with parameter (1 to 255) or (-1 to -255) to make motor spin.
+```http://192.168.100.10:1111/on?speed=0``` or  ```http://192.168.100.10:1111/off``` 
 
 
-Warning. Big current is not good for motor ! This means that values (1 to 80) and (-1 to -80) 
-not suggested. Try to use more than 100 or -100.
+Please note  when you call speed  with 0 value then just ```http://192.168.100.10:1111/on``` without parameter
+is not enought anymore . You should call speed with parameter (1 to 255) or (-1 to -255) to make motor spin again.
 
-Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
+```diff
+-**Warning. Big current is not good for motor ! This means that values (1 to 80) and (-1 to -80) 
+not suggested. Try to use more than 100 or -100.**
+
+-**Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
 can damage microcontrollers pins, because thouse pins operate with 20mA current and motor current
-can go over 150mA.
-
+can go over 150mA.**
+```
 __________________________________________________________
 ...........
 
@@ -118,6 +125,11 @@ Git project links :
 Add image to README.md on GitHub
 
 https://stackoverflow.com/questions/14494747/add-images-to-readme-md-on-github
+
+How to add color to Github's README.md file:
+
+https://stackoverflow.com/questions/11509830/how-to-add-color-to-githubs-readme-md-file
+
 
 
 
