@@ -4,12 +4,12 @@ arduino, johnny-five and circuit diagram / info
 _________________________________________________________
 
 
-Johny-five installation guide :
+Johnny-five installation guide :
 
-Please note that for johnny - five project there is requirements is "standrart-firmata" or "standrart firmata plus" modules. This module 
-must be loaded to arduino memory before you can run nodejs with johnny-five module, because johnny-five use I2C - protocol from this firmata module.
+Please note that for johnny - five project require "standrart-firmata" or "standrart firmata plus" program. This program 
+must be loaded to arduino memory before you can run NodejS with johnny-five library, because johnny-five use I2C - protocol from Firmata program.
 
-To load this firmata you have to install arduino ide. In arduino ide software go to: 
+To load Firmata program in arduino memory you have to install arduino ide software. In arduino ide software go to: 
 
 ```File -> Examples -> Firmata -> Standart firmata``` 
 
@@ -23,14 +23,16 @@ To display all devices and find out serial ports for arduino in Linux , enter in
 -> Check what device apears, when you plug in usb data cable to pc with arduino and display list of devices again
 
 -> for example  ```/dev/ttyACM2``` or ```/dev/ttyS0```  my devices displayed
--> arduino ide -> tools -> serial port -> /dev/ttyS0
+
+-> At Arduino ide software to check device option go to: 
+```-> tools -> serial port -> /dev/ttyS0```
 
 if arduino ide software not displaying serial ports in Linux:
--> try to give rights to device using chmod commands , if there is no serial port option in arduino ide.
-
--> Linux terminal : 
+-> try to give rights to device using chmod commands , if there is no serial port option in arduino ide, then run in Linux terminal : 
 
 ```sudo chmod 777 /dev/ttyS0```
+
+( Assuming that arduino using ttyS0 - device port for data between pc and arduino)
 _________________________________________________________
 
 Project 1 : Thermometer -TMP 36 (nodejs - johnny-five) 
@@ -38,9 +40,8 @@ Project 1 : Thermometer -TMP 36 (nodejs - johnny-five)
 -> Project require Uno Arduino R3 and thermometer tmp 36 sensor to
 measure temperature data
 
--> This is modified version from original. I made express -  and mysql - knex module 
-extenssion for project to save and display history data of temperature with 10 second measure interval 
-to detect new temperature.
+-> This is modified version from original where temperature measurement happens every 10 seconds interval . I made express -  and mysql - knex library 
+extenssion for project to save values in mysql-database and display history data in browser via http-protocol(express - library).
 
 -> It will contains hosted html page (in future), where ajax call asking temperature and visualize it at client side using chartjs.
 
@@ -110,12 +111,12 @@ Please note  when you call speed  with 0 value then just ```http://192.168.100.1
 is not enought anymore . You should call speed with parameter (1 to 255) or (-1 to -255) to make motor spin again.
 
 ```diff
--**Warning. Big current is not good for motor ! This means that values (1 to 80) and (-1 to -80) 
-not suggested. Try to use more than 100 or -100.**
+-Warning. Big current is not good for motor ! This means that values (1 to 80) and (-1 to -80) 
+-not suggested. Try to use more than 100 or -100.
 
--**Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
-can damage microcontrollers pins, because thouse pins operate with 20mA current and motor current
-can go over 150mA.**
+-Warning ! Avoid also connect motors directly to "arduino"- or "raspberry pi"- pins. Motor current
+-can damage microcontrollers pins, because thouse pins operate with 20mA current and motor current
+-can go over 150mA.
 ```
 __________________________________________________________
 ...........
