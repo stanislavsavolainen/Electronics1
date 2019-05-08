@@ -52,25 +52,25 @@ http://johnny-five.io/examples/temperature-tmp36/
 __________________________________________________________
 
 
-Project 2 : Logic gates ( arduino not required, just gate chip, wires and 9 voltage battery )
+Project 2 : Logic gates ( arduino not required, just gate chip, wires, switches, led and 9 voltage battery )
 
 1. Project 2 folder "or_gate.png" picture show closed diagram of OR gate logic using sn7432n chip.
 
 ![Alt text](Project2/or_gate.png?)
 
-2. Project 2 folder "and_gate.png" picture show closed diagram of AND gate logic using sn74hct08 chip.
+2. Project 2 folder "and_gate.png" picture show  of AND-gate circuit diagram logic using sn74hct08 chip.
 
 ![Alt text](Project2/and_gate.png?)
 
-3. Project 2 folder "not_gate.png" picture show closed diagram of NOT gate logic using 74hct04n(philips) chip, 
+3. Project 2 folder "not_gate.png" picture show  of NOT-gate circuit diagram logic using 74hct04n(philips) chip, 
 NOT GATE also means inverter / hex inverter chip.
 
 ![Alt text](Project2/not_gate.png?)
 
-Info : when check this diagram you can be confused about how switches works in practical way. 
-That in "OR"- and "AND"-gates switch present 1 in truth table as open ( not electricity flow) and 0
-means there is electricty, but led ( light emitting diode ) present oposite logic, where 0 means that 
-led is off and 1 means there is light in led.
+Info : when you check this diagram you can be confused about how switches works in practical way. 
+"OR"- and "AND"-gates present 1 in truth table when switch is off ( not electricity flow) and 0 switch is on
+ (there is electricty) , but for led ( light emitting diode ) there is oposite logic, where 0 means that 
+led is off and 1 means there is on , so there is light in led when truth table show output as value 1.
 
 
 __________________________________________________________
