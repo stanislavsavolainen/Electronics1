@@ -119,6 +119,35 @@ is not enought anymore . You should call speed with parameter (1 to 255) or (-1 
 -can go over 150mA.
 ```
 __________________________________________________________
+
+Project 4 : LCD Display ( Uno Arduino R3 and LCD 1602 display )
+
+-> this display can display only 16x2 characters and only ascii values. Unicode characters are not supported.
+
+-> my pins not match with original project, because I did other connection with this lcd display and instead of make same
+wire connection I modified pins in code.   
+
+
+-> Search from google.com  "lcd 16x2 pins" or "lcd 1602 pins" and check then images to figure out this display properties
+
+-> to use my verion of application you can just start lcd_display_with_http.js like my previous nodejs & johnny five project
+
+-> to display text on lcd screen you can use hosted html file or put following url to browser:
+
+```http://127.0.0.1:1111/write?row1=hello&row2=world``` 
+
+-> Now you can see at first row ```hello``` and at second ```world``` 
+
+![Alt text](Project4/images/IMG_20190828_000936_scaled1.png?)
+
+![Alt text](Project4/images/IMG_20190828_001903_scaled1.png?)
+
+Original source to project:
+
+http://johnny-five.io/examples/lcd/
+
+__________________________________________________________
+
 ...........
 
 Git project links :

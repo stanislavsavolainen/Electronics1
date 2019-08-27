@@ -1,0 +1,43 @@
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+<html>
+
+<body>
+
+row 1 : <input type='text' value='1234' id='row1' /><br />
+row 2 : <input type='text' value='5678' id='row2' /><br />
+<button onclick="writeToDisplay()"> display text </button>
+
+
+<script type="text/javascript">
+
+function writeToDisplay(){
+
+	console.log("write data to lcd display");
+
+	let row1 = $('#row1').val(); 
+	let row2 = $('#row2').val(); 
+
+
+	$.ajax({
+	type: 'GET',
+	url: 'http://127.0.0.1:1111/write?row1='+row1+"&row2="+row2,
+	dataType: "JSON", // data type expected from server
+	success: function (data) { }
+	});
+
+}
+
+
+</script>
+
+</body>
+
+</html>
+
+
