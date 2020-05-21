@@ -118,6 +118,52 @@ is not enought anymore . You should call speed with parameter (1 to 255) or (-1 
 -can damage microcontrollers pins, because thouse pins operate with 20mA current and motor current
 -can go over 150mA.
 ```
+
+
+__________________________________________________________
+
+
+Project 3 b: Motor ( Esp8266 and L298N where connected to 12 Voltage RS550 DC motor)
+
+Start and stop motor in web-browser. 
+
+ESP8266 ( wifi arduino) make http-server wich is connected to L298N h-bridge). Motor controller can start, stop , change, rotate direction and pwm speed. 
+Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial"
+
+
+
+You can use "Angry Ip Scanner" software to find ESP8266 ip-address in your private network or get info from arduino ide serial monitor.
+
+
+Motor rotate forward: 
+```http://your-esp8266-ip-address/on?speed=100```
+
+Motor rotate inverse direction: 
+```http://your-esp8266-ip-address/on?speed=-100```
+
+Motor stop: 
+```http://your-esp8266-ip-address/on?speed=-100```
+
+
+Relevent links :
+
+
+    https://randomnerdtutorials.com/esp32-servo-motor-web-server-arduino-ide/
+    
+    https://techtutorialsx.com/2016/10/22/esp8266-webserver-getting-query-parameters/
+    
+    https://github.com/esp8266/ESPWebServer/blob/master/examples/HelloServer/HelloServer.ino
+    
+    http://embedded-lab.com/blog/tutorial-5-setting-esp8266-web-server/
+    
+    
+    https://www.quora.com/How-do-I-get-the-IP-address-of-the-Wi-Fi-Module-ESP-8266
+    
+    https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/
+    
+    https://www.instructables.com/id/Interface-L298N-Using-NodeMCU/
+
+
 __________________________________________________________
 
 Project 4 : LCD Display ( Uno Arduino R3 and LCD 1602 display )
