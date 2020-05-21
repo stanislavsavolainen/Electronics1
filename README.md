@@ -128,8 +128,18 @@ Project 3 b: Motor ( Esp8266 and L298N where connected to 12 Voltage RS550 DC mo
 Start and stop motor in web-browser. 
 
 ESP8266 ( wifi arduino) make http-server wich is connected to L298N h-bridge). Motor controller can start, stop , change, rotate direction and pwm speed. 
-Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial"
+Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial" and 12 Voltage RS550 dc motor 
+with current like 1,5A without load.
 
+
+```diff
+
+Warning ! Don't use RS550 or johnson rs-775 DC-motor with L9110 h-bridge controller. Some motor have bigger current and voltage than motor controller can tolerate.
+Measure motor current first before select h-bridge for it. L9110 max current is 800mA and 12 Voltage wich is not suitable for this connection.
+
+Multimeter max current is 250mA in generaly ( rs550/rs775 dc motor current cannot be measured by multimeter at this setup. Search for ampermeter wich is rated for 10A and 12 Voltage.
+
+```
 
 
 You can use "Angry Ip Scanner" software to find ESP8266 ip-address in your private network or get info from arduino ide serial monitor.
@@ -142,7 +152,7 @@ Motor rotate inverse direction:
 ```http://your-esp8266-ip-address/on?speed=-100```
 
 Motor stop: 
-```http://your-esp8266-ip-address/on?speed=-100```
+```http://your-esp8266-ip-address/on?speed=0```
 
 
 Relevent links :
