@@ -3,7 +3,7 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
-const char* ssid = "your wifi networ name";
+const char* ssid = "your wifi network name";
 const char* password = "your wifi network password";
 
 //ena pin to L298N ( remove jumper) , in1 to L298N in1 , in2 = L298N in2
@@ -15,16 +15,15 @@ int in2 = 0; // ESP8266 D2-pin ( gpio pin 0)
 
 ESP8266WebServer server(80);
 
-const int led = 5;
 
 void handleRoot() {
-  digitalWrite(led, 1);
+ 
   server.send(200, "text/plain", "hello from esp8266!");
-  digitalWrite(led, 0);
+  
 }
 
 void handleNotFound(){
-  digitalWrite(led, 1);
+  
   String message = "File Not Found\n\n";
   message += "URI: ";
   message += server.uri();
@@ -37,16 +36,10 @@ void handleNotFound(){
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
   server.send(404, "text/plain", message);
-  digitalWrite(led, 0);
+  
 }
 
 void setup(void){
-
-  
-  //pinMode(led, OUTPUT);
-
-  
-  //digitalWrite(led, 0);
 
   pinMode(ena, OUTPUT);
   pinMode(in1, OUTPUT);
@@ -101,10 +94,7 @@ void setup(void){
 
           int speed_value = server.arg(i).toInt();
 
-          for( int j = 0; j < speed_value; j++ ) Serial.print("*");
-
-
-
+      
            if(speed_value > 0 && speed_value != 0) {
            //motor rotate forward 
 
@@ -159,13 +149,18 @@ void setup(void){
    Serial.println( querystr );
 
       
-      digitalWrite(led, HIGH);
-    server.send(200, "text/plain", "LED on");
+     
+    server.send(200, "text/plain", "motor on");
   });
 
   server.on("/off", [](){
-    digitalWrite(led, LOW);
-    server.send(200, "text/plain", "LED off");
+
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, LOW);
+
+    analogWrite(ena, 0 ); 
+    
+    server.send(200, "text/plain", "motor off");
   });
 
 

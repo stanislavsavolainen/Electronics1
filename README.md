@@ -78,6 +78,8 @@ __________________________________________________________
 
 Project 3 : Motors ( express and Johnny-five project on nodejs )
 
+Miniature small Electric DC Motor 1.5V - 4.5V Model Robots ( my motor model ) 
+
 -> project require Uno Arduino R3, H-bridge (like L9110 H-bridge module) and motor
 -> standart dc motor 3 - 5 voltage with 150 - 200 mA current
 -> connect motor to L9110 h-bridge two first pins from left where two big green socets with 2 pins both .
@@ -107,7 +109,7 @@ Motor stop:
 ```http://192.168.100.10:1111/on?speed=0``` or  ```http://192.168.100.10:1111/off``` 
 
 
-Please note  when you call speed  with 0 value then just ```http://192.168.100.10:1111/on``` without parameter
+Please note , when you call speed  with 0 value then just ```http://192.168.100.10:1111/on``` without parameter
 is not enought anymore . You should call speed with parameter (1 to 255) or (-1 to -255) to make motor spin again.
 
 ```diff
@@ -123,13 +125,25 @@ is not enought anymore . You should call speed with parameter (1 to 255) or (-1 
 __________________________________________________________
 
 
-Project 3 b: Motor ( Esp8266 and L298N where connected to 12 Voltage RS550 DC motor)
+Project 3 b: Motor ( Esp8266 and L298N where connected to 12 Voltage 775 DC motor)
 
 Start and stop motor in web-browser. 
 
 ESP8266 ( wifi arduino) make http-server wich is connected to L298N h-bridge). Motor controller can start, stop , change, rotate direction and pwm speed. 
 Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial" and 12 Voltage RS550 dc motor 
-with current like 1,5A without load.
+with current like (1,5A without load RS550 ) .
+
+ESP32 is new model of ESP8266. Both are wifi arduino. I am using ESP8266.
+
+
+- 775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise  ( my motor model ) only 350mA without load and low noice
+
+
+- 12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver ( my motor model ) 1,5 A  Motor speed not working with this motor
+
+
+- Miniature small Electric DC Motor 1.5V - 4.5V Model Robots ( my motor model ) also tested on L9110 and L298N with 4,5 Voltage battery 
+This motor used in Project 3  ( my first motor project and johnny-five)
 
 
 ```diff
@@ -138,6 +152,7 @@ with current like 1,5A without load.
 -Measure motor current first before select h-bridge for it. L9110 max current is 800mA and 12 Voltage wich is not suitable for this connection.
 
 -Multimeter max current is 250mA in generaly ( rs550/rs775 dc motor current cannot be measured by multimeter at this setup. Search for ampermeter wich is rated for 10A and 12 Voltage.
+- Ampermeter work only when current is one direction when, when motor H-bridge will change current direction and Ampermeter will not show value. 
 
 ```
 
