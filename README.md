@@ -100,10 +100,10 @@ there is package.json file with all required library information to install. The
 
 
 Motor rotate forward: 
-```http://192.168.100.10:1111/on?speed=100```
+```http://192.168.100.10:1111/on?speed=255```
 
 Motor rotate inverse direction: 
-```http://192.168.100.10:1111/on?speed=-100```
+```http://192.168.100.10:1111/on?speed=-255```
 
 Motor stop:
 ```http://192.168.100.10:1111/on?speed=0``` or  ```http://192.168.100.10:1111/off``` 
@@ -136,7 +136,23 @@ with current like (1,5A without load RS550 ) .
 ESP32 is new model of ESP8266. Both are wifi arduino. I am using ESP8266.
 
 
-- 775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise  ( my motor model ) only 350mA without load and low noice
+```diff
++ ESP8266 show 997hz on DSO150 osciloscope. This signal go from arduino gpio pin to L298N ena pin to control motor speed
+
++ "775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise" and "Miniature small Electric DC Motor 1.5V - 4.5V Model Robots" speed controll works perfectly 
+
+```
+
+```diff
+- My currently research show that "12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver"  cause L298N h-bridge overheat after 3 minutes of working. Like 85 celsium degree and
+motor speed not working properly. Motor start and stop working normaly and motor can rotation clockwise or counterclockwise also work good when give speed positive or negative parameter.
+
+- also my 775 DC motor seems to be compatible with L9110 h bridge by voltage and current, but you probaply face problem if you try to load motor or try voltage over 12V. So L9110 is not safe at this point. 
+
+```
+
+
+- 775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise  ( my motor model ) only 250mA without load and low noice
 
 
 - 12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver ( my motor model ) 1,5 A  Motor speed not working with this motor
@@ -161,10 +177,10 @@ You can use "Angry Ip Scanner" software to find ESP8266 ip-address in your priva
 
 
 Motor rotate forward: 
-```http://your-esp8266-ip-address/on?speed=100```
+```http://your-esp8266-ip-address/on?speed=1024```
 
 Motor rotate inverse direction: 
-```http://your-esp8266-ip-address/on?speed=-100```
+```http://your-esp8266-ip-address/on?speed=-1024```
 
 Motor stop: 
 ```http://your-esp8266-ip-address/on?speed=0```
@@ -218,6 +234,43 @@ Original source to project:
 http://johnny-five.io/examples/lcd/
 
 __________________________________________________________
+
+Project 5: Pulse width modulation ( PWM ) , rectangle square wave 500 hz to 1khz 
+
+-> can control motor speed ( change duty cycle, but in arduino pwm frequency is more like constant in clock rate )
+
+-> PWM signal can be displayed at osciloscope ( DSO 150 ) , connect oscilosope to arduino pwm pin or to function generator.
+
+-> Arduino not required, if you use function generatior like ICL8038 to generate pwm signal, but
+  you can now change also wave type and frequency.
+
+-> You can connect function generator (ICL8038) to L298N h-bridge ena-pin and try to generate pwm signal instead 
+of arduino . ( Not tried at the moment )
+
+  
+- "Arduino uno R3" duty cycle is 100% when pwm value is 255 "analogWrite( enapin, 255)" 
+- "ESP8266" duty cycle is 100% when pwm value is 1024 "analogWrite( enapin, 1024 )"
+
+__________________________________________________________
+
+Project 6: IR receiver ( Infared sensor ky-022 / vs 18388 )
+
+-> tv remote controll send ifrared signal to arduino. Arduino display remote control buttons hex value 
+in Arduino ide serial monitor 
+
+Arduino ide IR receiver library setup:
+https://www.thegeekpub.com/18493/setup-an-ir-remote-for-an-arduino/
+
+
+You can also link other functionality to arduino when receive ir signal for example rgb led:
+
+https://pinouts.net/infrared-sensor-receiver-module-guide-ky-022/
+
+ 
+
+
+__________________________________________________________
+
 
 ...........
 
