@@ -298,6 +298,9 @@ How to add color to Github's README.md file:
 
 https://stackoverflow.com/questions/11509830/how-to-add-color-to-githubs-readme-md-file
 
+Git remove files and folders:
+https://stackoverflow.com/questions/6313126/how-to-remove-a-directory-from-git-repository
+
 
 
 
