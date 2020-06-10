@@ -129,8 +129,8 @@ Project 3 b: Motor ( Esp8266 and L298N where connected to 12 Voltage 775 DC moto
 
 Start and stop motor in web-browser. 
 
-ESP8266 ( wifi arduino) make http-server wich is connected to L298N h-bridge). Motor controller can start, stop , change, rotate direction and pwm speed. 
-Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial" and 12 Voltage RS550 dc motor 
+ESP8266 ( wifi arduino) make http-server wich is connected to L298N h-bridge). Motor controller can start, stop , change rotation direction and pwm speed. 
+Like I did in previous project 3 where L9110 h-bridge work with johnny-five. I did "pure arduino ide project" using several esp8266 tutorial" and 12 Voltage 775 dc motor 
 with current like (1,5A without load RS550 ) .
 
 ESP32 is new model of ESP8266. Both are wifi arduino. I am using ESP8266.
@@ -141,11 +141,15 @@ ESP32 is new model of ESP8266. Both are wifi arduino. I am using ESP8266.
 
 + "775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise" and "Miniature small Electric DC Motor 1.5V - 4.5V Model Robots" speed controll works perfectly 
 
++ Good to have many motors and h-bridges with different parameters to check practical working.
+
++ Good to have multimeter, voltagemeter, ampermeter and osciloscope
+
 ```
 
 ```diff
 - My currently research show that "12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver"  cause L298N h-bridge overheat after 3 minutes of working. Like 85 celsium degree and
-motor speed not working properly. Motor start and stop working normaly and motor can rotation clockwise or counterclockwise also work good when give speed positive or negative parameter.
+- motor speed not working properly. Motor can start and stop normaly, also motor can rotate clockwise or counterclockwise, when give speed positive or negative parameter, but change speed value don't efect to motor speed.
 
 - also my 775 DC motor seems to be compatible with L9110 h bridge by voltage and current, but you probaply face problem if you try to load motor or try voltage over 12V. So L9110 is not safe at this point. 
 
@@ -155,10 +159,10 @@ motor speed not working properly. Motor start and stop working normaly and motor
 - 775 DC 12V-36V 3500-9000RPM Motor Brushed Large Torque High Power Low Noise  ( my motor model ) only 250mA without load and low noice
 
 
-- 12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver ( my motor model ) 1,5 A  Motor speed not working with this motor
+- 12V RS550 19500 RPM DC Motor High Torque Gear Box for Electric Drill Screwdriver ( my motor model ) 1,5 A.  Motor speed not working with this motor
 
 
-- Miniature small Electric DC Motor 1.5V - 4.5V Model Robots ( my motor model ) also tested on L9110 and L298N with 4,5 Voltage battery 
+- Miniature small Electric DC Motor 1.5V - 4.5V Model Robots ( my motor model ) also tested on L9110 and L298N with 4,5 Voltage battery. 
 This motor used in Project 3  ( my first motor project and johnny-five)
 
 
@@ -255,8 +259,14 @@ __________________________________________________________
 
 Project 6: IR receiver ( Infared sensor ky-022 / vs 18388 )
 
--> tv remote controll send ifrared signal to arduino. Arduino display remote control buttons hex value 
-in Arduino ide serial monitor 
+-> tv remote control send ifrared signal to arduino. Arduino display remote control buttons hex value 
+in Arduino ide serial monitor. 
+
+-> Added rgb led to project. When tv remote control red, green, yellow and blue button pressed then turn right rgb light correspond key pressed 
+
+-> please note than diffrent tv remote control have their own key values wich not match ( for example one remote controll red key have different value that other tv remote controll red key)  
+
+-> in my project I am using 2 different tv remote control wich keys not matching.
 
 Arduino ide IR receiver library setup:
 https://www.thegeekpub.com/18493/setup-an-ir-remote-for-an-arduino/
@@ -266,7 +276,11 @@ You can also link other functionality to arduino when receive ir signal for exam
 
 https://pinouts.net/infrared-sensor-receiver-module-guide-ky-022/
 
- 
+
+
+Relevant links:
+https://stackoverflow.com/questions/15113128/ir-hex-comparison
+https://create.arduino.cc/projecthub/muhammad-aqib/arduino-rgb-led-tutorial-fc003e
 
 
 __________________________________________________________
